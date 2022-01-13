@@ -1,3 +1,3 @@
 # OLPart
 
-coming soon
+coming soon (about 1 - 2 day)
