@@ -211,6 +211,7 @@ def train_success(rounds=30):
             if i == 0:
                 context, another_context, reward, p95_list = get_now_ipc(lc_app, bg_app, core_list,
                                                                          performamce_counters)
+                mab_1.add_del_app(app_id)
 
                 chose_arm_storage.append([core_list, llc_config, mb_config])
                 reward_arms, chosen_arms, tmp_cumulative_reward[0], tmp_G[0] = onlineEvaluate(mab_1, reward,
