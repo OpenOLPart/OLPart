@@ -17,6 +17,18 @@ Tailbench: http://tailbench.csail.mit.edu
 
 PARSEC 3.0: https://parsec.cs.princeton.edu/parsec3-doc.htm
 
+# Run OLPart
+
+## File Description
+```
+get_arm.py : generate resource configurations as arms.
+get_config.py : some tool functions.
+OLUCB.py: main algorithm of OLPart.
+vote_bandit.py : main file used to make online resource partitioning decisions.
+```
+
+## run program:
+    python vote_bandit.py
 
 
 
