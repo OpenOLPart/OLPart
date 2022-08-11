@@ -12,7 +12,6 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
-
 def gen_feasible_configs(num_of_cores, core_top_k):
     num_app = len(core_top_k)
     top_k = len(core_top_k[0])

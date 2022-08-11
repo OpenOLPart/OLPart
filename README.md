@@ -29,6 +29,3 @@ vote_bandit.py : main file used to make online resource partitioning decisions.
 
 ## run program:
     python vote_bandit.py
-
-
-

@@ -105,6 +105,7 @@ def get_LC_app_latency_and_judge(lc_app_name):
 
     flag = 0
     for i in lc_app_name:
+        # The address of your LC jobs' output file
         dir = lc_output_file
         while True:
             if os.path.exists(dir):
@@ -124,8 +125,10 @@ def get_LC_app_latency_and_judge(lc_app_name):
 
 
 def get_now_ipc(lc_app, bg_app, performance_counters):
-    # return contextual information and reward
+    # Return contextual information and reward
+    # Use perf command to get the values of selected counters
     context_feature, counters_without_self, ipc = perf_app(performance_counters)
+    # Simple feature processing, normalized to [1,10]
     context_feature, counters_without_self = normalization(context_feature, counters_without_self)
     reward, latency = get_LC_app_latency_and_judge(lc_app)
     if reward == 1:
@@ -167,14 +170,15 @@ def refer_core(core_config):
         endpoint_right = endpoint_left + core_config[i] - 1
         app_cores[i] = ",".join([str(c) for c in list(range(endpoint_left, endpoint_right + 1))])
         endpoint_left = endpoint_right + 1
-
-    assert endpoint_right <= 8, f"print {app_cores},give wrong cpu config"
+    # Num_of_cores: the CPU cores your server have
+    assert endpoint_right <= num_of_cores, f"print {app_cores},give wrong cpu config"
     return app_cores
 
 
 def gen_init_config(app_id, llc_arm_orders, alg="fair"):
-    # init resource config: equal allocation
+    # Init resource config: equal allocation
     app_num = len(app_id)
+    # Max units of (cores, LLC ways, memory bandwidth)
     nof_core = 9
     nof_llc = 10
     nof_mb = 10
